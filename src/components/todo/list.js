@@ -1,17 +1,20 @@
 import React from 'react';
+//import useState?
 
-class TodoList extends React.Component {
+const TodoList = (props) => {//change this
 
-  render() {
-    return (
+  return(
       <ul>
-        {this.props.list.map(item => (
-          <li
-            className={`complete-${item.complete.toString()}`}
+        {props.list.map(item => (//change this
+          <li>
+            className={`complete-${item.complete.toString()}`}//change item.complete?
             key={item._id}
           >
+            handle complete comes from todo.js
             <span onClick={() => this.props.handleComplete(item._id)}>
+              {/* change this.props */}
               {item.text}
+              {/* maybe mess with this? */}
             </span>
           </li>
         ))}

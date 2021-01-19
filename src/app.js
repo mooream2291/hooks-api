@@ -1,13 +1,14 @@
 import React from 'react';
-import { useState } from'react';
-
+import { Navbar } from 'react-bootstrap';
 import ToDo from './components/todo/todo.js';
 
-function App(props) {
-    // const [] = useState();
+const App = () => {
     return (
       <>
-        <ToDo />
+      <Navbar bg = "primary" expand = "large">
+      <Navbar.brand href = "#home">Home</Navbar.brand>
+      </Navbar>
+      <ToDo />
       </>
     );
   }
