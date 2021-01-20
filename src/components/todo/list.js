@@ -1,26 +1,24 @@
 import React from 'react';
 //import useState?
 
-const TodoList = (props) => {//change this
+const TodoList = (props) => {
 
   return(
       <ul>
-        {props.list.map(item => (//change this
-          <li>
-            className={`complete-${item.complete.toString()}`}//change item.complete?
-            key={item._id}
+        {props.list.map(item => (
+          <li onClick={()=> props.handleComplete(item._id)}
           >
-            handle complete comes from todo.js
-            <span onClick={() => this.props.handleComplete(item._id)}>
-              {/* change this.props */}
+            className={`complete-${item.complete.toString()}`}
+            key={item._id}
+            {/* handle complete comes from todo.js */}
+            <span>
               {item.text}
-              {/* maybe mess with this? */}
             </span>
           </li>
         ))}
       </ul>
     );
   }
-}
+
 
 export default TodoList;

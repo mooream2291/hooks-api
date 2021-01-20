@@ -48,6 +48,5 @@ const handleSubmit = (e) => {
       </>
     );
   }
-}
 
 export default TodoForm;
