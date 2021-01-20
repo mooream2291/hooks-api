@@ -1,7 +1,7 @@
 'use strict'
 
 const express = require('express');
-const Item = require('../models/place');
+const Item = require('../models/');
 const Item = new Item();
 
 const router = express.Router();

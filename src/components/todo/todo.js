@@ -18,13 +18,13 @@ const ToDo = () => {
   ])
 
 
-  const addItem = (item) => {
+  const _addItem = (item) => {
     item._id = Math.random();
     item.complete = false;
     this.setList([...list, item]);
   };
 
-  const toggleComplete = (id) => {
+  const _toggleComplete = (id) => {
 
     let item = list.filter(i => i._id === id)[0] || {};
 
@@ -51,15 +51,10 @@ const ToDo = () => {
           There are {setCount} Items To Complete
           </h2>
       </header>
-      <Router>
         <section className="todo">
-          <Route path="/" exact component={ToDo} />
-          <Route path="/edit/:id" component={toggleComplete} />
-          <Route path="/create" component={AddItem} />
-          <Route path="/delete" component={deleteItem} />
           <div>
             {/* change this.addItem */}
-            <TodoForm handleSubmit={this.addItem} />
+            <TodoForm handleSubmit={this._addItem} />
           </div>
 
           <div>
@@ -67,11 +62,10 @@ const ToDo = () => {
               // change this.state.list
               list={this.state.list}
               // change this.toggleComplete
-              handleComplete={this.toggleComplete}
+              handleComplete={this._toggleComplete}
             />
           </div>
         </section>
-      </Router>
     </>
   );
 }

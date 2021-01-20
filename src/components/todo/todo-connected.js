@@ -71,20 +71,24 @@ const ToDo = () => {
           There are {list.filter(item => !item.complete).length} Items To Complete
         </h2>
       </header>
+      <Router>
+        <section className="todo">
+          <Route path="/" exact component={_getTodoItems} />
+          <Route path="/edit/:id" component={_toggleComplete} />
+          <Route path="/create" component={_addItem} />
+          <Route path="/delete" component={deleteItem} />
+          <div>
+            <TodoForm handleSubmit={_addItem} />
+          </div>
 
-      <section className="todo">
-
-        <div>
-          <TodoForm handleSubmit={_addItem} />
-        </div>
-
-        <div>
-          <TodoList
-            list={list}
-            handleComplete={_toggleComplete}
-          />
-        </div>
-      </section>
+          <div>
+            <TodoList
+              list={list}
+              handleComplete={_toggleComplete}
+            />
+          </div>
+        </section>
+      </Router>
     </>
   );
 };
