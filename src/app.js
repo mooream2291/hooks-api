@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { component } from 'react';
 import { Navbar } from 'react-bootstrap';
 import ToDo from './components/todo/todo.js';
 
