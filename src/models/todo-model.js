@@ -1,6 +1,6 @@
 'use strict';
 
-class Place {
+class Item {
 
     constructor() {
         this.id = 0;
@@ -42,4 +42,4 @@ class Place {
     }
 }
 
-module.exports = Place;
+module.exports = Item;

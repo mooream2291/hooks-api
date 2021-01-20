@@ -1,49 +1,49 @@
 'use strict'
 
 const express = require('express');
-const Place = require('../models/place');
-const place = new Place();
+const Item = require('../models/place');
+const Item = new Item();
 
 const router = express.Router();
 
 //RESTful routes
 
-router.get('/place', getPlace);
-router.get('/place/:id', getOnePlace);
-router.post('/place', createPlace);
-router.put('/place/:id', updatePlace);
-router.delete('/place/:id', deletePlace);
+router.get('/todo', getItems);
+router.get('/todo/:id', getOneItem);
+router.post('/todo', createItem);
+router.put('/todo/:id', updateItem);
+router.delete('/todo/:id', deleteItem);
 
 //RESTful route handlers
 
-function getPlace(req, res) {
-    const allPlaces = place.get();
-    res.status(200).json(allPlaces);
+function getItems(req, res) {
+    const allItems = Item.get();
+    res.status(200).json(allItems);
 }
 
-function getOnePlace(req, res) {
+function getOneItem(req, res) {
     const id = req.params.id;
-    const onePlace = place.get(id);
+    const onePlace = item.get(id);
     res.status(200).json(onePlace);
 }
 
-function createPlace(req, res) {
+function createItem(req, res) {
     console.log(req.body.name);
     const obj = req.body;
-    const newPlace = place.create(obj);
-    res.status(200).json(newPlace);
+    const newItem= Item.create(obj);
+    res.status(200).json(newItem);
 }
 
-function updatePlace(req, res) {
+function updateItem(req, res) {
     const updateId = req.params.id;
-    const updatedPlace = place.update(updateId, req.body);
-    res.status(200).json(updatedPlace);
+    const updatedItem = Item.update(updateId, req.body);
+    res.status(200).json(updatedItem);
 }
 
-function deletePlace(req, res) {
+function deleteItem(req, res) {
     const deleteId = req.params.id;
-    const deletePlace = place.delete(deleteId);
-    res.status(200).send('deleting place');
+    const deleteItem = Item.delete(deleteId);
+    res.status(200).send('deleting item');
 }
 
 module.exports = router;

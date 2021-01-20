@@ -4,6 +4,8 @@
 // npm i to install them
 require('dotenv').config();
 const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 //to initialize
 const app = express();
 //require middleware
