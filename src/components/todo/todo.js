@@ -2,8 +2,6 @@ import React from 'react';
 import TodoForm from './form.js';
 import TodoList from './list.js';
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-
 import './todo.scss';
 
 const ToDo = () => {
@@ -54,15 +52,15 @@ const ToDo = () => {
         <section className="todo">
           <div>
             {/* change this.addItem */}
-            <TodoForm handleSubmit={this._addItem} />
+            <TodoForm handleSubmit={_addItem} />
           </div>
 
           <div>
             <TodoList
               // change this.state.list
-              list={this.state.list}
+              list={list}
               // change this.toggleComplete
-              handleComplete={this._toggleComplete}
+              handleComplete={_toggleComplete}
             />
           </div>
         </section>
