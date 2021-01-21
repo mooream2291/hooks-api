@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 
 const TodoForm = (props) => {
 
-    // const [ item, setItem ] = useState[{}];
+    const [ item, setItem ] = useState({});
 
-  //   const handleInputChange = e => {
-  //   setItem({...item, [e.target.name]: e.target.value });
-  // };
+    const handleInputChange = e => {
+    setItem({...item, [e.target.name]: e.target.value });
+  };
 
   // useEffect (() => {
   //  console.log('yooooooooooooo Im here', item);
@@ -19,8 +19,10 @@ const handleSubmit = (e) => {
     //colon is else
     // let send = (item.text && item.difficulty && item.assignee)?true:false
     // send && props.handleSubmit(item);
-    //reseting form fields to an empty object
+    // reseting form fields to an empty object
     // setItem({});
+    console.log(item);
+    return item;
   };
 
     return (
@@ -32,18 +34,16 @@ const handleSubmit = (e) => {
             <input
               name="text"
               placeholder="Add To Do List Item"
-              // onChange={ handleInputChange }
+              onChange={ handleInputChange }
             />
           </label>
           <label>
             <span>Difficulty Rating</span>
-            <input defaultValue="1" type="range" min="1" max="5" name="difficulty"/>
-            {/* onChange={ handleInputChange }  */}
+            <input defaultValue="1" type="range" min="1" max="5" name="difficulty" onChange={ handleInputChange } />
           </label>
           <label>
             <span>Assigned To</span>
-            <input type="text" name="assignee" placeholder="Assigned To"/>
-            {/* onChange={ handleInputChange }  */}
+            <input type="text" name="assignee" placeholder="Assigned To" onChange={ handleInputChange } />
           </label>
           <button type = "submit" data-testid = "submit" >Add Item</button>
         </form>

@@ -3,25 +3,24 @@ import { useEffect, useState } from 'react'
 
 const useAjax = () => {
 
-    const [data, setData] = useState({});
+    const [data, setData] = useState([]);
     const [options, request] = useState({});
     console.log(options);
-    console.log(data);
     useEffect(() => {
         async function ajaxCall() {
 
             try {
-                console.log(options);
                 const res = await axios(options);
-                console.log(res);
+                console.log(res.data);
                 setData(res.data);
-                console.log(data);
             } catch (error) {
+                console.log(error)
                 // setError(error);
             }
         }
         ajaxCall();
     }, [ options ]);
+    console.log(data);
     return { data, request };
 }
 

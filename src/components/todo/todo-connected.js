@@ -13,15 +13,15 @@ const ToDoConnected = () => {
   const { data, request } = useAjax();
   const [list, setList] = useState([]);
   // const [count, setCount] = useState();
-
+console.log(list);
   const _getTodoItems = () => {
     const options = { 
         method: 'get',
         url: todoAPI,    
       }
-      console.log(options);
-      const obj = request(options);
-      console.log(obj)
+      request(options);
+      console.log(data);
+      
       // setList(data);//may need curlies
   };
 //when this component mounts it calls this get todo list function
@@ -41,7 +41,8 @@ const ToDoConnected = () => {
       // headers: { 'Content-Type': 'application/json' },
       // body: JSON.stringify(item)
     }
-    useAjax(options);
+    console.log(item);
+    request(options);
       // .then(response => response.json())
       // .then(savedItem => {
         // setList([...list, savedItem])
