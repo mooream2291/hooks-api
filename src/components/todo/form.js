@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
-
+// TODO:
+// send data to db to be added
+// pull fresh data
+// re-render
 const TodoForm = (props) => {
 
     const [ item, setItem ] = useState({});
@@ -9,18 +12,18 @@ const TodoForm = (props) => {
     setItem({...item, [e.target.name]: e.target.value });
   };
 
-  // useEffect (() => {
-  //  console.log('yooooooooooooo Im here', item);
-  // }, [item]);
+  useEffect (() => {
+   console.log('yooooooooooooo Im here', item);
+  }, [item]);
 
 const handleSubmit = (e) => {
     e.preventDefault();
     e.target.reset();
     //colon is else
-    // let send = (item.text && item.difficulty && item.assignee)?true:false
-    // send && props.handleSubmit(item);
+    let send = (item.text && item.difficulty && item.assignee)?true:false
+    send && props.handleSubmit(item);
     // reseting form fields to an empty object
-    // setItem({});
+    setItem({});
     console.log(item);
     return item;
   };

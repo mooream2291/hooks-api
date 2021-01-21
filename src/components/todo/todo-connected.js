@@ -11,8 +11,9 @@ const todoAPI = 'https://api-js401.herokuapp.com/api/v1/todo';
 const ToDoConnected = () => {
 
   const { data, request } = useAjax();
+  const [count, setCount] = useState();
   const [list, setList] = useState([]);
-  // const [count, setCount] = useState();
+
 console.log(list);
   const _getTodoItems = () => {
     const options = { 
@@ -20,45 +21,47 @@ console.log(list);
         url: todoAPI,    
       }
       request(options);
+      setList(data);
       console.log(data);
-      
-      // setList(data);//may need curlies
+
   };
 //when this component mounts it calls this get todo list function
   useEffect(()=> {
-    _getTodoItems();
-  }, []); // this is allowing two thigns to happen simultaneously. 
+    if(list.length === 0){
+      _getTodoItems();
+    }
+    setCount(list.filter(item => !item.complete).length);
+    document.title = `todo list: (${count})`;
+  }, [data, list, count]); // this is allowing two thigns to happen simultaneously. 
 
   const _addItem = (item) => {
     const options = { 
-    // item.due = new Date(),
-    // fetch(todoAPI, {
+ 
       method: 'post',
       url: todoAPI,
       data: item,
-      // mode: 'cors'
-      // cache: 'no-cache',
-      // headers: { 'Content-Type': 'application/json' },
-      // body: JSON.stringify(item)
+   
     }
     console.log(item);
     request(options);
-      // .then(response => response.json())
-      // .then(savedItem => {
-        // setList([...list, savedItem])
-      // })
-      // .catch(console.error);
+    setList(data);
+
   };
+
+  useEffect(()=> {
+    
+  })
 
   const _toggleComplete = id => {
     let item = list.filter(i => i._id === id)[0] || {};
-    const options = { 
+    const options = {
+
       method: 'put',
       url: `${todoAPI}/${id}`, 
       data: { complete: !item.complete },
     }
-    const data = useAjax(options);
-    setList(data);//may need curlies
+    const newData = useAjax(options);
+    setList(newData);//may need curlies
 };
 
     // let item = list.filter(i => i._id === id)[0] || {};

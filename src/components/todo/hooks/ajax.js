@@ -12,7 +12,8 @@ const useAjax = () => {
             try {
                 const res = await axios(options);
                 console.log(res.data);
-                setData(res.data);
+                setData(res.data.results);
+                console.log(res.data);
             } catch (error) {
                 console.log(error)
                 // setError(error);
