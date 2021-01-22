@@ -64,6 +64,25 @@ console.log(list);
     setList(newData);//may need curlies
 };
 
+const _delete = async (id) => {
+  let item = list.filter(i => i._id === id)[0] || {};
+  if(item._id){
+    item.complete = !item.complete;
+  }
+  let url = `${todoAPI}/${id}`;
+  await fetch (url, {
+    method: 'delete',
+    mode: 'cors',
+    cache: 'no-cache',
+    header: { 'Content-Type': 'application/json'},
+    body: JSON.Stringify(item)
+    })
+    .then (savedItem => {
+      _getTodoItems();
+    })
+    .catch(console.err);
+}
+
     // let item = list.filter(i => i._id === id)[0] || {};
 
     // if (item._id) {
@@ -102,6 +121,7 @@ console.log(list);
             <TodoList
               list={list}
               handleComplete={_toggleComplete}
+              deleteOne={_delete}
             />
           </div>
         </section>
